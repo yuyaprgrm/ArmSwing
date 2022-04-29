@@ -1,0 +1,22 @@
+{
+  "name": "oirancage/arm-swing",
+  "description": "arm swing for pocketmine-mp",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "famima65536",
+      "email": "famima65536@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "oirancage\\armswing\\": "src/oirancage/armswing"
+    }
+  },
+  "require": {
+  },
+  "require-dev": {
+    "pocketmine/pocketmine-mp": "^4.3.1"
+  }
+}
