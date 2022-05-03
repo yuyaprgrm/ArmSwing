@@ -10,6 +10,11 @@ use pocketmine\network\mcpe\protocol\types\LevelSoundEvent;
 
 class EventListener implements Listener
 {
+    public function __construct(
+        private Setting $setting
+    ){
+    }
+
     public function onDataReceive(DataPacketReceiveEvent $event){
         $packet = $event->getPacket();
         if(!$packet instanceof LevelSoundEventPacket){
@@ -22,7 +27,7 @@ class EventListener implements Listener
         }
 
         if($packet->sound === LevelSoundEvent::ATTACK_NODAMAGE){
-            $player->getServer()->broadcastPackets($player->getViewers(), [clone $packet]);
+            if($this->setting->isClickSoundEnabled())$player->getServer()->broadcastPackets($player->getViewers(), [clone $packet]);
             $player->broadcastAnimation(new ArmSwingAnimation($player));
         }
     }

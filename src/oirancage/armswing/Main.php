@@ -7,6 +7,10 @@ use pocketmine\plugin\PluginBase;
 class Main extends PluginBase
 {
     protected function onEnable(): void{
-        $this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
+        $this->saveDefaultConfig();
+        $setting = new Setting(
+            $this->getConfig()->get("click-sound-enabled")
+        );
+        $this->getServer()->getPluginManager()->registerEvents(new EventListener($setting), $this);
     }
 }
